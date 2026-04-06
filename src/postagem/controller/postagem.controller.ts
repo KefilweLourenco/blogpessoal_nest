@@ -13,13 +13,13 @@ export class PostagemController {
     }
 
     @Get('/:id')
-    findById(@Param('id' , ParseIntPipe) id: number): Promise<Postagem>{
+    findById(@Param('id', ParseIntPipe) id: number): Promise<Postagem> {
         return this.postagemService.findById(id);
     }
 
     @Get('/titulo/:titulo')
     @HttpCode(HttpStatus.OK)
-    findByAllTitulo(@Param('titulo') titulo: string): Promise<Postagem[]>{
+    findAllByTitulo(@Param('titulo') titulo: string): Promise<Postagem[]> {
         return this.postagemService.findAllByTitulo(titulo);
     }
 
@@ -31,13 +31,13 @@ export class PostagemController {
 
     @Put()
     @HttpCode(HttpStatus.OK)
-    update(@Body()postagem: Postagem): Promise<Postagem> {
+    update(@Body() postagem: Postagem): Promise<Postagem> {
         return this.postagemService.update(postagem);
     }
 
     @Delete('/:id')
     @HttpCode(HttpStatus.NO_CONTENT)
-    delete(@Param('id', ParseIntPipe) id: number){
+    delete(@Param('id', ParseIntPipe) id: number) {
         return this.postagemService.delete(id);
     }
 }
